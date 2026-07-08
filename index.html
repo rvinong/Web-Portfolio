@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rvin Labrada portfolio, a monochrome minimal web portfolio for full-stack web systems, student tools, and frontend experiments."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <title>Rvin Labrada | Full-Stack Portfolio</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f7f7f5'/%3E%3Ctext x='11' y='41' font-family='monospace' font-size='24' font-weight='700' fill='%23111111'%3Erl%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" data-topbar>
+      <a class="brand" href="#top" aria-label="Rvin home">
+        <span class="brand__name">rvin labrada</span>
+      </a>
+
+      <div class="topbar__actions">
+        <div class="theme-picker" role="group" aria-label="Choose color theme">
+          <button class="theme-choice" type="button" data-theme-choice="system" aria-label="Use system theme" title="System">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5h16v11H4zM9 20h6M12 16v4" />
+            </svg>
+          </button>
+          <button class="theme-choice" type="button" data-theme-choice="light" aria-label="Use light theme" title="Light">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+          </button>
+          <button class="theme-choice" type="button" data-theme-choice="dark" aria-label="Use dark theme" title="Dark">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 14.2A7.2 7.2 0 0 1 9.8 3 8.2 8.2 0 1 0 21 14.2z" />
+            </svg>
+          </button>
+        </div>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-menu">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14M5 12h14M5 17h14" />
+          </svg>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="side-nav" aria-label="Primary navigation">
+      <a class="side-nav__brand" href="#top" aria-label="Rvin home">
+        <span class="brand__name">rvin labrada</span>
+      </a>
+      <div class="side-nav__links">
+        <a href="#top" class="is-active">00 / top</a>
+        <a href="#about">01 / about</a>
+        <a href="#work">02 / work</a>
+        <a href="#stack">03 / stack</a>
+        <a href="#certifications">04 / certs</a>
+        <a href="#notes">05 / notes</a>
+        <a href="#contact">06 / contact</a>
+      </div>
+      <div class="theme-picker side-nav__theme" role="group" aria-label="Choose color theme">
+        <button class="theme-choice" type="button" data-theme-choice="system" aria-label="Use system theme" title="System">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5h16v11H4zM9 20h6M12 16v4" />
+          </svg>
+        </button>
+        <button class="theme-choice" type="button" data-theme-choice="light" aria-label="Use light theme" title="Light">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+        <button class="theme-choice" type="button" data-theme-choice="dark" aria-label="Use dark theme" title="Dark">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 14.2A7.2 7.2 0 0 1 9.8 3 8.2 8.2 0 1 0 21 14.2z" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="site-menu" data-menu>
+      <nav aria-label="Mobile navigation">
+        <a href="#top">00 / top</a>
+        <a href="#about">01 / about</a>
+        <a href="#work">02 / work</a>
+        <a href="#stack">03 / stack</a>
+        <a href="#certifications">04 / certs</a>
+        <a href="#notes">05 / notes</a>
+        <a href="#contact">06 / contact</a>
+      </nav>
+    </div>
+
+    <main id="top" class="page-shell">
+      <section class="hero section-block" aria-labelledby="hero-title" data-reveal>
+        <div class="hero__copy">
+          <p class="micro-label">portfolio</p>
+          <h1 id="hero-title">rvin labrada</h1>
+          <p class="hero__lead">
+            Computer Engineering student building frontend, backend, and database-driven projects through student tools,
+            organization portals, ecommerce flows, and interface experiments.
+          </p>
+          <div class="hero__links" aria-label="Primary links">
+            <a class="text-link text-link--primary" href="#work">
+              view work
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+            <a class="text-link" href="#contact">
+              contact
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </div>
+          <div class="hero__socials" aria-label="Social links">
+            <a href="https://github.com/rvinong" target="_blank" rel="noreferrer">github</a>
+            <a href="https://github.com/rvinong/cpe-website" target="_blank" rel="noreferrer">icpep</a>
+            <a href="https://github.com/rvinong/CPE-HUB" target="_blank" rel="noreferrer">cpe-hub</a>
+            <a href="mailto:ongrvin@gmail.com">email</a>
+          </div>
+        </div>
+
+        <aside class="lanyard-panel" aria-label="Portfolio ID">
+          <div class="halftone" aria-hidden="true"></div>
+          <div class="lanyard-panel__stage" data-lanyard-root aria-hidden="true">
+            <div class="lanyard-fallback">
+              <span class="lanyard-fallback__strap"></span>
+              <span class="lanyard-fallback__clip"></span>
+              <span class="lanyard-fallback__card">
+                <span class="lanyard-fallback__avatar"></span>
+                <span>rvin labrada</span>
+              </span>
+            </div>
+          </div>
+        </aside>
+
+        <dl class="proof-strip" aria-label="Portfolio proof points">
+          <div>
+            <dt>public repos</dt>
+            <dd>6 live</dd>
+          </div>
+          <div>
+            <dt>main builds</dt>
+            <dd>cpe-hub / icpep</dd>
+          </div>
+          <div>
+            <dt>build path</dt>
+            <dd>full-stack</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section-block split-section" id="about" aria-labelledby="about-label" data-reveal>
+        <div class="section-heading">
+          <p class="micro-label" id="about-label">01 / about</p>
+        </div>
+        <div class="prose">
+          <p>
+            I am Rvin Ong Labrada, a Computer Engineering student exploring how ideas become real systems through
+            frontend interfaces, backend logic, database design, authentication, and UI/UX.
+          </p>
+          <p>
+            My GitHub work is built around learning by shipping: student and organization web systems, ecommerce-style
+            apps, dashboards, account flows, role-based features, media galleries, comments, reactions, and small
+            fundamentals projects.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-block" id="work" aria-labelledby="work-label" data-reveal>
+        <div class="section-heading section-heading--compact">
+          <div class="section-kicker-row">
+            <p class="micro-label" id="work-label">02 / work</p>
+            <a class="section-action" href="https://github.com/rvinong?tab=repositories" target="_blank" rel="noreferrer">all repos</a>
+          </div>
+        </div>
+
+        <div class="work-list">
+          <article class="work-card">
+            <div class="work-card__visual" aria-hidden="true">
+              <img src="assets/icpep-connect.png" alt="" width="1280" height="820" loading="lazy" decoding="async" />
+              <span class="project-rank">01</span>
+            </div>
+            <div class="work-card__body">
+              <p class="micro-label">featured / organization portal</p>
+              <h3>icpep connect</h3>
+              <p>
+                NwSSU Computer Engineering Organization portal with announcements, events, news, gallery posts, accounts,
+                dashboard tools, comments, reactions, and Supabase-backed features.
+              </p>
+              <ul class="tag-list" aria-label="Project tags">
+                <li>react</li>
+                <li>vite</li>
+                <li>tailwind</li>
+                <li>supabase</li>
+                <li>framer motion</li>
+              </ul>
+              <div class="work-card__links" aria-label="Project links">
+                <a href="https://cpe-website-two.vercel.app" target="_blank" rel="noreferrer">live</a>
+                <a href="https://github.com/rvinong/cpe-website" target="_blank" rel="noreferrer">source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__visual work-card__visual--grid" aria-hidden="true">
+              <img src="assets/cpe-hub.png" alt="" width="1280" height="820" loading="lazy" decoding="async" />
+              <span class="project-rank">02</span>
+            </div>
+            <div class="work-card__body">
+              <p class="micro-label">system / ecommerce</p>
+              <h3>cpe-hub</h3>
+              <p>
+                Ecommerce-style web system with frontend pages, backend routes, authentication-related logic, MongoDB and
+                Mongoose database work, product scripts, and admin/user workflows.
+              </p>
+              <ul class="tag-list" aria-label="Project tags">
+                <li>react</li>
+                <li>tailwind</li>
+                <li>express</li>
+                <li>mongodb</li>
+                <li>jwt</li>
+              </ul>
+              <div class="work-card__links" aria-label="Project links">
+                <a href="https://cpe-hub-lac.vercel.app" target="_blank" rel="noreferrer">live</a>
+                <a href="https://github.com/rvinong/CPE-HUB" target="_blank" rel="noreferrer">source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__visual work-card__visual--dots" aria-hidden="true">
+              <img src="assets/mco-linkedlist-preview.png" alt="" width="1280" height="820" loading="lazy" decoding="async" />
+              <span class="project-rank">03</span>
+            </div>
+            <div class="work-card__body">
+              <p class="micro-label">fundamentals / data structures</p>
+              <h3>mco-linkedlist</h3>
+              <p>
+                Programming fundamentals project focused on linked list logic, data structure behavior, and small
+                JavaScript interface practice.
+              </p>
+              <ul class="tag-list" aria-label="Project tags">
+                <li>javascript</li>
+                <li>html</li>
+                <li>css</li>
+                <li>data structures</li>
+              </ul>
+              <div class="work-card__links" aria-label="Project links">
+                <a href="https://github.com/rvinong/mco-linkedlist" target="_blank" rel="noreferrer">source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__visual work-card__visual--grid" aria-hidden="true">
+              <img src="assets/ether-web-innovations.png" alt="" width="1280" height="820" loading="lazy" decoding="async" />
+              <span class="project-rank">04</span>
+            </div>
+            <div class="work-card__body">
+              <p class="micro-label">frontend / presentation</p>
+              <h3>ether web innovations</h3>
+              <p>
+                Frontend web design project for practicing layout, styling, visual presentation, and responsive page
+                structure.
+              </p>
+              <ul class="tag-list" aria-label="Project tags">
+                <li>html</li>
+                <li>css</li>
+                <li>javascript</li>
+                <li>web design</li>
+              </ul>
+              <div class="work-card__links" aria-label="Project links">
+                <a href="https://github.com/rvinong/Ether-Web-Innovations" target="_blank" rel="noreferrer">source</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="stack" aria-labelledby="stack-label" data-reveal>
+        <div class="section-heading section-heading--compact">
+          <div class="section-kicker-row">
+            <p class="micro-label" id="stack-label">03 / stack</p>
+            <a class="section-action" href="https://github.com/rvinong/rvinong" target="_blank" rel="noreferrer">profile readme</a>
+          </div>
+        </div>
+        <div class="stack-grid">
+          <article class="mini-card">
+            <p class="micro-label">languages</p>
+            <ul class="tag-list" aria-label="Languages">
+              <li>javascript</li>
+              <li>python</li>
+              <li>c++</li>
+              <li>c</li>
+              <li>html5</li>
+              <li>css3</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <p class="micro-label">frontend</p>
+            <ul class="tag-list" aria-label="Frontend tools">
+              <li>react</li>
+              <li>react router</li>
+              <li>tailwind css</li>
+              <li>framer motion</li>
+              <li>axios</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <p class="micro-label">backend + database</p>
+            <ul class="tag-list" aria-label="Backend and database tools">
+              <li>node.js</li>
+              <li>express.js</li>
+              <li>jwt</li>
+              <li>bcrypt</li>
+              <li>mongodb</li>
+              <li>mongoose</li>
+              <li>supabase</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <p class="micro-label">tools</p>
+            <ul class="tag-list" aria-label="Developer tools">
+              <li>git</li>
+              <li>github</li>
+              <li>vs code</li>
+              <li>webpack</li>
+              <li>postcss</li>
+              <li>vercel</li>
+              <li>github pages</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ASSUMPTION: CLA and PCAP certificate PDFs are user-supplied copies stored with the portfolio assets. -->
+      <section class="section-block" id="certifications" aria-labelledby="certifications-label" data-reveal>
+        <div class="section-heading section-heading--compact">
+          <div class="section-kicker-row">
+            <p class="micro-label" id="certifications-label">04 / certifications</p>
+            <a class="section-action" href="https://www.credly.com/badges/d2ee31ef-b7c4-467b-9c63-df3b22fb0ad3/public_url" target="_blank" rel="noreferrer">all certifications</a>
+          </div>
+        </div>
+
+        <div class="cert-grid">
+          <article class="cert-card">
+            <div class="cert-card__mark" aria-hidden="true">
+              <span>c</span>
+            </div>
+            <h3>computer hardware basics</h3>
+            <p>cisco</p>
+            <div class="cert-card__links" aria-label="Certificate links">
+              <a href="https://www.credly.com/badges/d2ee31ef-b7c4-467b-9c63-df3b22fb0ad3/public_url" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">{</span>
+                verify
+                <span aria-hidden="true">}</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="cert-card">
+            <div class="cert-card__mark" aria-hidden="true">
+              <span>c</span>
+            </div>
+            <h3>cla programming essentials in c</h3>
+            <p>cisco netacad</p>
+            <div class="cert-card__links" aria-label="Certificate links">
+              <a href="assets/certificates/cla-programming-essentials-in-c.pdf" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">{</span>
+                verify
+                <span aria-hidden="true">}</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="cert-card">
+            <div class="cert-card__mark" aria-hidden="true">
+              <span>py</span>
+            </div>
+            <h3>pcap programming essentials in python</h3>
+            <p>cisco netacad</p>
+            <div class="cert-card__links" aria-label="Certificate links">
+              <a href="assets/certificates/pcap-programming-essentials-in-python.pdf" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">{</span>
+                verify
+                <span aria-hidden="true">}</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="notes" aria-labelledby="notes-label" data-reveal>
+        <div class="section-heading section-heading--compact">
+          <div class="section-kicker-row">
+            <p class="micro-label" id="notes-label">05 / notes</p>
+            <a class="section-action" href="https://github.com/rvinong" target="_blank" rel="noreferrer">github</a>
+          </div>
+        </div>
+
+        <ol class="note-list" aria-label="Portfolio notes">
+          <li>
+            <span class="micro-label">mindset / learning</span>
+            <strong>seeing how far vibe coding can take me</strong>
+            <p>Build quickly, test ideas, fix what breaks, and let every project expose the next thing to learn.</p>
+          </li>
+          <li>
+            <span class="micro-label">systems / product</span>
+            <strong>visible ui plus hidden logic</strong>
+            <p>Projects practice the interface people use, the backend that responds, and the database that keeps state connected.</p>
+          </li>
+          <li>
+            <span class="micro-label">coverage / practice</span>
+            <strong>student portals, ecommerce, dashboards</strong>
+            <p>Current work covers organization tools, account systems, role-based flows, media galleries, comments, and reactions.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section-block contact-section" id="contact" aria-labelledby="contact-title" data-reveal>
+        <div>
+          <p class="micro-label">06 / contact</p>
+          <h2 id="contact-title">reach out for builds, collabs, or project feedback.</h2>
+        </div>
+        <div class="contact-card">
+          <p class="micro-label">say hello</p>
+          <p>For web systems, student tools, organization portals, or a content pass on the portfolio, reach me here.</p>
+          <div class="email-row">
+            <a href="mailto:ongrvin@gmail.com">ongrvin@gmail.com</a>
+            <button class="copy-button" type="button" data-copy-email data-copy-value="ongrvin@gmail.com">copy</button>
+          </div>
+          <div class="contact-links">
+            <a class="text-link text-link--primary" href="mailto:ongrvin@gmail.com">
+              open mail app
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+            <a class="text-link" href="https://github.com/rvinong" target="_blank" rel="noreferrer">
+              github profile
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="/src/lanyard-entry.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="128" viewBox="0 0 1024 128">
+  <rect width="1024" height="128" fill="#111111"/>
+  <g fill="#f7f7f5">
+    <path d="M47 16h19v20l18-10 13 22-18 10 18 10-13 22-18-10v20H47V80L29 90 16 68l18-10-18-10 13-22 18 10V16z"/>
+    <circle cx="56" cy="58" r="20" fill="#111111"/>
+    <path d="M56 43 74 58 56 73 38 58z"/>
+  </g>
+  <g fill="#f7f7f5" font-family="Arial, Helvetica, sans-serif" font-weight="800">
+    <text x="118" y="68" font-size="42" letter-spacing="5">ICPEP.SE</text>
+    <text x="120" y="94" font-size="15" letter-spacing="2">INSTITUTE OF COMPUTER ENGINEERS OF THE PHILIPPINES</text>
+  </g>
+  <g fill="#f7f7f5" transform="translate(500 0)">
+    <path d="M47 16h19v20l18-10 13 22-18 10 18 10-13 22-18-10v20H47V80L29 90 16 68l18-10-18-10 13-22 18 10V16z"/>
+    <circle cx="56" cy="58" r="20" fill="#111111"/>
+    <path d="M56 43 74 58 56 73 38 58z"/>
+  </g>
+  <g fill="#f7f7f5" font-family="Arial, Helvetica, sans-serif" font-weight="800" transform="translate(500 0)">
+    <text x="118" y="68" font-size="42" letter-spacing="5">ICPEP.SE</text>
+    <text x="120" y="94" font-size="15" letter-spacing="2">STUDENT EDITION</text>
+  </g>
+  <g stroke="#f7f7f5" stroke-width="5" opacity="0.28">
+    <path d="M0 8H1024"/>
+    <path d="M0 120H1024"/>
+  </g>
+</svg>
