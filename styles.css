@@ -507,6 +507,7 @@ button {
 .lanyard-panel {
   position: static;
   overflow: visible;
+  display: none;
   min-height: 360px;
   padding: 0;
   background: transparent;
@@ -1104,6 +1105,7 @@ button {
   }
 
   .lanyard-panel {
+    display: block;
     min-height: 390px;
   }
 

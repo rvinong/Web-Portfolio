@@ -82,7 +82,7 @@ async function readDomMetrics(page) {
   });
 }
 
-async function verifyViewport(name, viewport, isMobile) {
+async function verifyViewport(name, viewport, isMobile, expectLanyard = true) {
   const page = await browser.newPage({
     viewport,
     deviceScaleFactor: 1,
@@ -99,6 +99,45 @@ async function verifyViewport(name, viewport, isMobile) {
   page.on("pageerror", (error) => consoleErrors.push(error.message));
 
   await page.goto(url, { waitUntil: "networkidle" });
+  if (!expectLanyard) {
+    await page.waitForTimeout(800);
+
+    const mobileDom = await page.evaluate(() => {
+      const panel = document.querySelector(".lanyard-panel");
+      const panelDisplay = panel instanceof HTMLElement ? getComputedStyle(panel).display : "missing";
+
+      return {
+        canvasCount: document.querySelectorAll(".lanyard-wrapper canvas").length,
+        horizontalOverflow: document.documentElement.scrollWidth - window.innerWidth,
+        panelDisplay,
+      };
+    });
+
+    await page.screenshot({ path: `${screenshotDir}/lanyard-${name}.png`, fullPage: true });
+    await page.close();
+
+    if (mobileDom.canvasCount !== 0 || mobileDom.panelDisplay !== "none") {
+      throw new Error(
+        `${name}: lanyard should be hidden, canvasCount=${mobileDom.canvasCount}, panelDisplay=${mobileDom.panelDisplay}.`,
+      );
+    }
+
+    if (mobileDom.horizontalOverflow > 1) {
+      throw new Error(`${name}: horizontal overflow detected (${mobileDom.horizontalOverflow}px).`);
+    }
+
+    if (consoleErrors.length > 0) {
+      throw new Error(`${name}: browser console errors: ${consoleErrors.join(" | ")}`);
+    }
+
+    return {
+      name,
+      lanyard: "hidden",
+      overflow: mobileDom.horizontalOverflow,
+      panelDisplay: mobileDom.panelDisplay,
+    };
+  }
+
   await page.waitForSelector(".lanyard-wrapper canvas", { timeout: 15000 });
   await page.waitForTimeout(1800);
 
@@ -160,7 +199,7 @@ async function verifyViewport(name, viewport, isMobile) {
 try {
   const results = [
     await verifyViewport("desktop", { width: 1440, height: 950 }, false),
-    await verifyViewport("mobile", { width: 390, height: 844 }, true),
+    await verifyViewport("mobile", { width: 390, height: 844 }, true, false),
   ];
 
   console.log(JSON.stringify(results, null, 2));
