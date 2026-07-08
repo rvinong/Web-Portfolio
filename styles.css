@@ -193,7 +193,6 @@ button {
   font-weight: 800;
   letter-spacing: 0.03em;
   line-height: 1.2;
-  text-transform: lowercase;
 }
 
 .topbar__actions {
@@ -387,7 +386,6 @@ button {
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: 0;
-  text-transform: lowercase;
 }
 
 .hero__lead {
