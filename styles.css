@@ -660,7 +660,6 @@ button {
   font-size: var(--text-md);
   font-weight: 800;
   line-height: 1.2;
-  text-transform: lowercase;
 }
 
 .split-section {
