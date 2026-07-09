@@ -280,7 +280,8 @@ function Band({
     band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
     ang.copy(card.current.angvel());
     rot.copy(card.current.rotation());
-    card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+    const idleSway = !dragged && !isMobile ? Math.sin(state.clock.elapsedTime * 0.85) * 0.012 : 0;
+    card.current.setAngvel({ x: ang.x + idleSway * 0.25, y: ang.y - rot.y * 0.25, z: ang.z + idleSway });
   });
 
   curve.curveType = "chordal";
