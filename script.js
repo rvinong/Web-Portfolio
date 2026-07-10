@@ -6,6 +6,11 @@ const themeChoices = [...document.querySelectorAll("[data-theme-choice]")];
 const revealItems = [...document.querySelectorAll("[data-reveal]")];
 const sideNavLinkList = document.querySelector(".side-nav__links");
 const navLinks = [...document.querySelectorAll(".side-nav__links a")];
+const navSections = navLinks
+  .map((link) => link.getAttribute("href") || "")
+  .filter((href) => href.startsWith("#") && href !== "#top")
+  .map((href) => document.getElementById(href.slice(1)))
+  .filter((section) => section instanceof HTMLElement);
 const workCards = [...document.querySelectorAll(".work-card")];
 const copyEmailButton = document.querySelector("[data-copy-email]");
 const themeOrder = ["system", "light", "dark"];
@@ -14,6 +19,7 @@ const storedTheme = readStoredTheme();
 const preferredTheme = themeOrder.includes(storedTheme || "") ? storedTheme : "system";
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 const finePointerQuery = window.matchMedia("(pointer: fine)");
+let activeNavFrame = 0;
 
 function readStoredTheme() {
   try {
@@ -75,6 +81,55 @@ function setActiveNavLink(activeLink) {
   updateSideNavIndicator(activeLink);
 }
 
+function getDocumentHeight() {
+  return Math.max(body.scrollHeight, root.scrollHeight, body.offsetHeight, root.offsetHeight);
+}
+
+function getNavLinkByHref(href) {
+  return navLinks.find((link) => link.getAttribute("href") === href);
+}
+
+function resolveActiveNavLink() {
+  const topLink = getNavLinkByHref("#top") || navLinks[0];
+  const contactLink = getNavLinkByHref("#contact") || navLinks[navLinks.length - 1];
+
+  if (window.scrollY <= 80) {
+    return topLink;
+  }
+
+  if (window.scrollY >= getDocumentHeight() - window.innerHeight - 32) {
+    return contactLink;
+  }
+
+  const activationY = Math.min(Math.max(window.innerHeight * 0.18, 120), 180);
+  let activeSection = null;
+
+  navSections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= activationY) {
+      activeSection = section;
+    }
+  });
+
+  if (!(activeSection instanceof HTMLElement)) {
+    return topLink;
+  }
+
+  return getNavLinkByHref(`#${activeSection.id}`) || topLink;
+}
+
+function syncActiveNavLink() {
+  setActiveNavLink(resolveActiveNavLink());
+  activeNavFrame = 0;
+}
+
+function queueActiveNavSync() {
+  if (activeNavFrame) {
+    return;
+  }
+
+  activeNavFrame = window.requestAnimationFrame(syncActiveNavLink);
+}
+
 function syncWorkCardCursor(card, event) {
   if (!(card instanceof HTMLElement)) {
     return;
@@ -106,8 +161,7 @@ function setMenuState(isOpen) {
 }
 
 applyTheme(preferredTheme || "system");
-
-updateSideNavIndicator(navLinks.find((link) => link.classList.contains("is-active")) || navLinks[0]);
+syncActiveNavLink();
 
 themeChoices.forEach((themeChoice) => {
   if (!(themeChoice instanceof HTMLButtonElement)) {
@@ -181,9 +235,9 @@ workCards.forEach((card) => {
 
 finePointerQuery.addEventListener("change", removeWorkCardCursorState);
 
-window.addEventListener("resize", () => {
-  updateSideNavIndicator(navLinks.find((link) => link.classList.contains("is-active")) || navLinks[0]);
-});
+window.addEventListener("scroll", queueActiveNavSync, { passive: true });
+window.addEventListener("resize", queueActiveNavSync);
+window.addEventListener("load", syncActiveNavLink);
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
@@ -200,23 +254,6 @@ if ("IntersectionObserver" in window) {
 
   revealItems.forEach((item) => revealObserver.observe(item));
 
-  const activeObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) {
-          return;
-        }
-
-        const activeLink = navLinks.find((link) => link.getAttribute("href") === `#${entry.target.id}`);
-        setActiveNavLink(activeLink);
-      });
-    },
-    { rootMargin: "-34% 0px -56% 0px", threshold: 0.01 },
-  );
-
-  document.querySelectorAll("main[id], main section[id]").forEach((section) => {
-    activeObserver.observe(section);
-  });
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
