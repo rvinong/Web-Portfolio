@@ -10,3 +10,5 @@ verification/
 .env
 .env.*
 !.env.example
+
+.vercel/
