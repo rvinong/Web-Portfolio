@@ -1043,6 +1043,135 @@ button {
   background: var(--color-gray-100);
 }
 
+.stack-grid .tag-list li {
+  --stack-color: var(--color-ink);
+  --stack-ink: color-mix(in srgb, var(--stack-color) 78%, var(--color-ink));
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.stack-grid .tag-list li:hover {
+  color: var(--stack-ink);
+  background: color-mix(in srgb, var(--stack-color) 15%, var(--color-background));
+  border-color: color-mix(in srgb, var(--stack-color) 70%, var(--color-gray-300));
+  box-shadow: 0 10px 24px -18px var(--stack-color);
+  transform: translateY(-1px);
+}
+
+.stack-grid .tag-list li[data-stack="javascript"] {
+  --stack-color: #f7df1e;
+  --stack-ink: color-mix(in srgb, #b39b00 82%, var(--color-ink));
+}
+
+.stack-grid .tag-list li[data-stack="python"] {
+  --stack-color: #3776ab;
+}
+
+.stack-grid .tag-list li[data-stack="cpp"] {
+  --stack-color: #00599c;
+}
+
+.stack-grid .tag-list li[data-stack="c"] {
+  --stack-color: #a8b9cc;
+  --stack-ink: color-mix(in srgb, #6d8198 78%, var(--color-ink));
+}
+
+.stack-grid .tag-list li[data-stack="html5"] {
+  --stack-color: #e34f26;
+}
+
+.stack-grid .tag-list li[data-stack="css3"] {
+  --stack-color: #1572b6;
+}
+
+.stack-grid .tag-list li[data-stack="react"] {
+  --stack-color: #61dafb;
+  --stack-ink: color-mix(in srgb, #159eca 80%, var(--color-ink));
+}
+
+.stack-grid .tag-list li[data-stack="react-router"] {
+  --stack-color: #ca4245;
+}
+
+.stack-grid .tag-list li[data-stack="tailwind"] {
+  --stack-color: #06b6d4;
+}
+
+.stack-grid .tag-list li[data-stack="framer-motion"] {
+  --stack-color: #0055ff;
+}
+
+.stack-grid .tag-list li[data-stack="axios"] {
+  --stack-color: #5a29e4;
+}
+
+.stack-grid .tag-list li[data-stack="node"] {
+  --stack-color: #5fa04e;
+}
+
+.stack-grid .tag-list li[data-stack="express"] {
+  --stack-color: #111111;
+}
+
+.stack-grid .tag-list li[data-stack="jwt"] {
+  --stack-color: #d63aff;
+}
+
+.stack-grid .tag-list li[data-stack="bcrypt"] {
+  --stack-color: #7c3aed;
+}
+
+.stack-grid .tag-list li[data-stack="mongodb"] {
+  --stack-color: #47a248;
+}
+
+.stack-grid .tag-list li[data-stack="mongoose"] {
+  --stack-color: #880000;
+}
+
+.stack-grid .tag-list li[data-stack="supabase"] {
+  --stack-color: #3ecf8e;
+}
+
+.stack-grid .tag-list li[data-stack="git"] {
+  --stack-color: #f05032;
+}
+
+.stack-grid .tag-list li[data-stack="github"] {
+  --stack-color: #181717;
+}
+
+.stack-grid .tag-list li[data-stack="vscode"] {
+  --stack-color: #007acc;
+}
+
+.stack-grid .tag-list li[data-stack="webpack"] {
+  --stack-color: #8dd6f9;
+  --stack-ink: color-mix(in srgb, #1c78a8 82%, var(--color-ink));
+}
+
+.stack-grid .tag-list li[data-stack="postcss"] {
+  --stack-color: #dd3a0a;
+}
+
+.stack-grid .tag-list li[data-stack="vercel"] {
+  --stack-color: #111111;
+}
+
+.stack-grid .tag-list li[data-stack="github-pages"] {
+  --stack-color: #4078c0;
+}
+
+:root[data-resolved-theme="dark"] .stack-grid .tag-list li[data-stack="express"],
+:root[data-resolved-theme="dark"] .stack-grid .tag-list li[data-stack="github"],
+:root[data-resolved-theme="dark"] .stack-grid .tag-list li[data-stack="vercel"] {
+  --stack-color: #f4f4f5;
+}
+
 .stack-grid {
   display: grid;
   gap: var(--space-3);
